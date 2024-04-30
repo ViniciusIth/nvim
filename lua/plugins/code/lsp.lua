@@ -69,6 +69,7 @@ return {
 
         -- used to enable autocompletion (assign to every lsp server config)
         local capabilities = cmp_nvim_lsp.default_capabilities()
+        capabilities.textDocument.completion.completionItem.snippetSupport = true
 
         -- Change the Diagnostic symbols in the sign column (gutter)
         -- (not in youtube nvim video)
@@ -79,9 +80,14 @@ return {
         end
 
         lspconfig["lua_ls"].setup(require("config.lsp.lua_ls")(capabilities, on_attach))
-        lspconfig["tsserver"].setup({ capabilities = capabilities, on_attach = on_attach })
         lspconfig["gopls"].setup(require("config.lsp.gopls")(capabilities, on_attach))
+        lspconfig["html"].setup(require("config.lsp.html")(capabilities, on_attach))
+        lspconfig["htmx"].setup(require("config.lsp.html")(capabilities, on_attach))
+
+        lspconfig["emmet_language_server"].setup(require("config.lsp.html")(capabilities, on_attach))
+        lspconfig["tsserver"].setup({ capabilities = capabilities, on_attach = on_attach })
         lspconfig["svelte"].setup({ capabilities = capabilities, on_attach = on_attach })
         lspconfig["tailwindcss"].setup({ capabilities = capabilities, on_attach = on_attach })
+        lspconfig["templ"].setup({ capabilities = capabilities, on_attach = on_attach })
     end
 }
