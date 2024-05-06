@@ -83,8 +83,9 @@ return {
         lspconfig["gopls"].setup(require("config.lsp.gopls")(capabilities, on_attach))
         lspconfig["html"].setup(require("config.lsp.html")(capabilities, on_attach))
         lspconfig["htmx"].setup(require("config.lsp.html")(capabilities, on_attach))
-
         lspconfig["emmet_language_server"].setup(require("config.lsp.html")(capabilities, on_attach))
+
+        lspconfig["sqlls"].setup({ capabilities = capabilities, on_attach = on_attach })
         lspconfig["tsserver"].setup({ capabilities = capabilities, on_attach = on_attach })
         lspconfig["svelte"].setup({ capabilities = capabilities, on_attach = on_attach })
         lspconfig["tailwindcss"].setup({ capabilities = capabilities, on_attach = on_attach })
